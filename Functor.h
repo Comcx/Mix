@@ -1,3 +1,6 @@
+#ifndef FUNCTOR_H
+#define FUNCTOR_H
+
 #define Mix_Prelude
 #include "Mix.h"
 
@@ -22,6 +25,6 @@ module Functor {
   
 }
 
-
+#endif
 
 

@@ -1,3 +1,6 @@
+#ifndef FOLDABLE_H
+#define FOLDABLE_H
+
 #define Mix_Prelude
 #include "Mix.h"
 
@@ -26,6 +29,6 @@ module Foldable {
 
 
 
-
+#endif
 
 

@@ -1,3 +1,6 @@
+#ifndef SHOW_H
+#define SHOW_H
+
 #define Mix_Prelude
 #include "Mix.h"
 
@@ -38,6 +41,10 @@ module Show {
 
 
 }
+
+
+#endif
+
 
 
 

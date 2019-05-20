@@ -3,6 +3,7 @@
 #include "Mix.h"
 #include "Show.h"
 #include "Functor.h"
+#include "Monad.h"
 #include "Monoid.h"
 #include "Foldable.h"
 

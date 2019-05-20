@@ -1,3 +1,6 @@
+#ifndef MONOID_H
+#define MONOID_H
+
 #define Mix_Prelude
 #include "Mix.h"
 
@@ -13,7 +16,7 @@ module Monoid {
 }
 
 
-
+#endif
 
 
 
