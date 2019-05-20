@@ -20,10 +20,10 @@ struct Test {
 
 module Show {
 	    
-  mix<> String
+  String
   show(Array<Int, 10> a) {return "array";}
 
-  mix<> String
+  String
   show(Test x) {return show(x.id) + " : " + x.msg;}
 
 }
@@ -53,9 +53,9 @@ module Monoid {
     return ans;
   }
 }
-use Show::show;
-use Functor::map;
-use Foldable::foldl;
+use module Show;
+use module Functor;
+use module Foldable;
 use module Monoid;
 use module Equal;
 use module Order;
@@ -71,10 +71,9 @@ Int
 main(Int argc, Char *argv[]) {
 
   Vector<Int> a {1, 2, -1, -3, 5, 7, 8};
-  Vector<Bool> vec {true, false, false};
   Vector<Int> vi
-    (map(vec,
-  	 function<Int(Bool)>([](Bool b) {return b ? 1 : 0;})));
+    (map(a,
+  	 function<Int(Int)>([](Int i) {return i * 2;})));
   Test tt1 {5, "tt1"};
   Test tt2 {6, "tt2"};
   Test ttt (tt1 + tt2);
