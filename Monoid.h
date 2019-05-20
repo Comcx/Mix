@@ -10,8 +10,9 @@ use module Mix;
 module Monoid {
 
   mix<Type T> T zero();
-  mix<Type T> T operator+(T &a, T &b);
-
+  
+  //This intentially leave commented for avoiding collision
+  //mix<Type T> T operator+(T &a, T &b);
   
 }
 

@@ -16,8 +16,8 @@ module Functor {
   map(Vector<A> v, function<B(A)> f) {
 
     Vector<B> ans {};
-    for(val &e : v)
-      ans.push_back(f(e));
+    for(var it(v.begin()); it != v.end(); ++it)
+      ans.push_back(f(*it));
 
     return ans;
   }
