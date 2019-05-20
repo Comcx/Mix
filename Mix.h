@@ -10,7 +10,7 @@
 
 
 //module Mix {// ===============>>
-#include <stdlib.h>
+#include <functional>
 
 #ifdef Mix_Prelude
 
@@ -97,28 +97,16 @@ def Char   = char;
 def Float  = float;
 def Double = double;
 
+use std::function;
 
-mix<Type T> String
-show(T);
 
-mix<mix<Type> Type F, Type A, Type B>
-F<B>
-map(F<A>, B (*f)(A));
+module Mix {
 
-mix<mix<Type> Type F, Type A, Type B>
-B
-foldl(B (*f)(B, A), F<A>, B);
-
-mix<Type A, Type B>
-B
-foldl(B (*f)(B, A), Vector<A> v, B b) {
-
-  var ans (b);
-  for(val &e : v)
-    ans = f(ans, e);
-
-  return ans;
+	    
 }
+
+
+
 
 
 
