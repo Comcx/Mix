@@ -39,7 +39,7 @@ Unit swap(T &a, T &b) {
 
 //Just testing...
 mix<mix<class> class F, class T>
-F<T> sort(BubbleTag b, F<T> a) {
+F<T> sort(InsertTag b, F<T> a) {
 
   F<T> ans (a);
   for(Int i(0); i < a.size(); ++i)
@@ -49,13 +49,30 @@ F<T> sort(BubbleTag b, F<T> a) {
   return ans;
 }
 
+mix<mix<class> class F, class T>
+F<T> sort(BubbleTag i, F<T> a) {
 
+  F<T> ans (a);
+  for(Int i(0); i < a.size(); ++i) {
+    for(Int j(i); j > 0 && ans[j] < ans[j-1]; --j)
+      swap(ans[j], ans[j-1]);
+  }
+  return ans;
+}
+
+mix<mix<class> class F, class T>
+F<T> sort(QuickTag q, F<T> a) {
+
+  F<T> ans (a);
+
+  return ans;
+}
 
 Int
 main(Int argc, Char *argv[]) {
 
   Vector<Int> v {4, 6, 7, 2, 4, 5};
-  Vector<Int> x (sort<Vector, Int>(Bubble, v));
+  Vector<Int> x (sort<Vector, Int>(Insert, v));
   println(show(x));
   
   return 0;
