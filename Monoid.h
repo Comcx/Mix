@@ -12,7 +12,7 @@ module Monoid {
   mix<Type T> T zero();
   
   //This intentially leave commented for avoiding collision
-  //mix<Type T> T operator+(T &a, T &b);
+  //mix<Type T> T operator+(T a, T b);
   
 }
 

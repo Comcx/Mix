@@ -14,7 +14,7 @@ module Equal {
   
   mix<class T>
   Bool
-  operator!=(T &a, T &b) {
+  operator!=(T a, T b) {
 
     return !(a == b);
   }

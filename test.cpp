@@ -10,49 +10,6 @@
 #include "Foldable.h"
 
 
-struct Test {
-
-  Int id;
-  String msg;
-};
-
-
-
-module Show {
-	    
-  String
-  show(Array<Int, 10> a) {return "array";}
-
-  String
-  show(Test x) {return show(x.id) + " : " + x.msg;}
-
-}
-
-module Equal {
-
-  Bool
-  operator==(Test &a, Test &b) {
-    return a.id == b.id;  
-  }
-}
-
-module Order {
-
-  Bool
-  operator<(Test &a, Test &b) {
-
-    return a.id < b.id;
-  }
-}
-
-module Monoid {
-
-  Test operator+(Test &a, Test &b) {
-
-    Test ans {a.id + b.id, a.msg + " " + b.msg};
-    return ans;
-  }
-}
 use module Show;
 use module Functor;
 use module Foldable;
@@ -65,23 +22,41 @@ mix<Type T>
 String
 ss(String s, T x) { return s + show(x) + " "; }
 
-Int f(Bool b) {return 1;}
+
+Tag(Merge);
+Tag(Quick);
+Tag(Bubble);
+Tag(Insert);
+
+
+mix<class T>
+Unit swap(T &a, T &b) {
+
+  val t(a);
+  a = b;
+  b = t;
+}
+
+//Just testing...
+mix<mix<class> class F, class T>
+F<T> sort(BubbleTag b, F<T> a) {
+
+  F<T> ans (a);
+  for(Int i(0); i < a.size(); ++i)
+    for(Int j(i); j > 0 && ans[j] < ans[j-1]; --j)
+      swap(ans[j], ans[j-1]);
+  
+  return ans;
+}
+
+
 
 Int
 main(Int argc, Char *argv[]) {
 
-  Vector<Int> a {1, 2, -1, -3, 5, 7, 8};
-  Vector<Int> vi
-    (map(a,
-  	 function<Int(Int)>([](Int i) {return i * 2;})));
-  Test tt1 {5, "tt1"};
-  Test tt2 {6, "tt2"};
-  Test ttt (tt1 + tt2);
-  println(show(ttt));
-  println(tt1 >= tt2);
-
-  println("233");
-  screen << foldl(ss, vi, String("")) << endl;
+  Vector<Int> v {4, 6, 7, 2, 4, 5};
+  Vector<Int> x (sort<Vector, Int>(Bubble, v));
+  println(show(x));
   
   return 0;
 }

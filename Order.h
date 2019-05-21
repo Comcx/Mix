@@ -16,19 +16,19 @@ module Order {
 
   mix<class T>
   Bool
-  operator>(T &a, T &b) {
+  operator>(T a, T b) {
     return !(a < b || a == b);
   }
 
   mix<class T>
   Bool
-  operator>=(T &a, T &b) {
+  operator>=(T a, T b) {
     return !(a < b);
   }
 
   mix<class T>
   Bool
-  operator<=(T &a, T &b) {
+  operator<=(T a, T b) {
     return a < b || a == b;
   }
 

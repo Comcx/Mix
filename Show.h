@@ -3,9 +3,10 @@
 
 #define Mix_Prelude
 #include "Mix.h"
-
+#include "Foldable.h"
 
 use module Mix;
+use module Foldable;
 
 module Show {
 
@@ -33,6 +34,15 @@ module Show {
   //Bool -> String
   String
   show(Bool b) { return b ? "true" : "false"; }
+
+  //Vector<T> -> String
+  mix<class T> String
+  show(Vector<T> v) { return
+      
+    foldl(function<String(String,T)>
+	    ([](String a, T e) {return a + show(e) + " ";}),
+          v, String(""));
+  }
 
 
 }

@@ -87,7 +87,8 @@ template<class T> using Queue = std::deque<T>;
 
 #define const(T)  const T
 #define unsign(T) unsigned T
-#define O_o(...)   virtual __VA_ARGS__ = 0
+#define O_o(...)  virtual __VA_ARGS__ = 0
+#define Tag(id)   enum id##Tag {id}
 
 
 def Int    = int;

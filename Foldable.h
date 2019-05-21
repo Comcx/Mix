@@ -11,12 +11,12 @@ module Foldable {
 
   mix<mix<Type> Type F, Type A, Type B>
   B
-  foldl(B (*f)(B, A), F<A>, B);
+  foldl(function<B(B, A)>, F<A>, B);
 
   //Vector
   mix<Type A, Type B>
   B
-  foldl(B (*f)(B, A), Vector<A> v, B b) {
+  foldl(function<B(B, A)> f, Vector<A> v, B b) {
 
     var ans (b);
     for(val &e : v)
