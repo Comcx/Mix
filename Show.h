@@ -1,9 +1,10 @@
 #ifndef SHOW_H
 #define SHOW_H
 
-#define Mix_Prelude
+
 #include "Mix.h"
 #include "Foldable.h"
+#include "Data.h"
 
 use module Mix;
 use module Foldable;

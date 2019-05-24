@@ -30,6 +30,16 @@ use std::function;
 #include "Foldable.h"
 #include "Sort.h"
 
+mix<class T> void
+print(T x) { screen << Show::show(x); }
+
+mix<class T> void
+println(T x) { screen << Show::show(x) << endl; }
+
+Vector<Char> chars(String s) {
+
+  return Vector<Char>(s.begin(), s.end());
+}
 
 
 

@@ -22,7 +22,7 @@ main(Int argc, Char *argv[]) {
 
   Vector<Int> v {7, 6, 8, 2, 4, 5};
   Vector<Int> x (sort(Insert, v));
-  Maybe<Int> res
+  Maybe<String> res
     (search(10, v, equal<Int>()));
 
   val s0(chars("abdghcjghkabkjlcacb"));

@@ -3,6 +3,7 @@
 
 
 #include "Mix.h"
+//#include "Show.h"
 
 
 #ifndef Mix_Data_String
@@ -13,16 +14,29 @@ use String = std::string;
 #ifndef Mix_Data_Vector
 #include <vector>
 mix<class T> use Vector = std::vector<T>;
+mix<class T> Int
+size(Vector<T> v) {return v.size();}
+mix<class T> Vector<T>
+operator&(Vector<T> v, T x) {
+  v.push_back(x);
+  return v;
+}
 #endif
 
 #ifndef Mix_Data_Map
 #include <map>
 mix<class A, class B> use Map = std::map<A, B>;
+mix<class A, class B> Int
+size(Map<A, B> m) {return m.size();}
+
 #endif
 
 #ifndef Mix_Data_LinkedList
 #include <list>
 mix<class T> use LinkedList = std::list<T>;
+mix<class T> Int
+size(LinkedList<T> v) {return v.size();}
+
 #endif
 
 #ifndef Mix_Data_IO
@@ -30,11 +44,6 @@ mix<class T> use LinkedList = std::list<T>;
 var &screen(std::cout);
 use std::endl;
 
-mix<class T> void
-print(T x) { screen << x; }
-
-mix<class T> void
-println(T x) { screen << x << endl; }
 #endif
 
 #ifndef Mix_Data_Array
@@ -45,6 +54,9 @@ mix<class T, size_t N> use Array = std::array<T, N>;
 #ifndef Mix_Data_Queue
 #include <deque>
 mix<class T> use Queue = std::deque<T>;
+mix<class T> Int
+size(Queue<T> v) {return v.size();}
+
 #endif
 
 #ifndef Mix_Data_Maybe

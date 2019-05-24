@@ -2,10 +2,11 @@
 #define MATH_H
 
 #include "Mix.h"
+#include <cmath>
 
 Int gcd(Int m, Int n) {
 
-  int r(m % n);
+  Int r(m % n);
   while(r != 0) {
 
     m = n;
@@ -14,10 +15,6 @@ Int gcd(Int m, Int n) {
   }
   return n;
 }
-
-
-
-
 
 
 

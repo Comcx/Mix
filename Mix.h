@@ -6,9 +6,9 @@
 
 
 #ifndef MIX_H
+#define MIX_H
 
-
-#include "Prelude.h"
+//#include "Prelude.h"
 
 
 #define var    auto
@@ -44,7 +44,7 @@ module Mix {
 
 
 
-#define MIX_H
+
 #endif
 
 

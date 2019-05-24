@@ -3,6 +3,7 @@
 
 #define Mix_Prelude
 #include "Mix.h"
+#include "Prelude.h"
 
 use module Mix;
 
