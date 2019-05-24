@@ -35,6 +35,15 @@ module Show {
   String
   show(Bool b) { return b ? "true" : "false"; }
 
+  //Maybe<T> -> String
+  mix<class T> String
+  show(Maybe<T> x) {
+    String ans("");
+    if(x) ans = "Just(" + show(x.value()) + ")";
+    else ans = "Nothing";
+    return ans;
+  }
+
   //Vector<T> -> String
   mix<class T> String
   show(Vector<T> v) { return
