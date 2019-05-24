@@ -19,6 +19,11 @@ module Order {
   operator>(T a, T b) {
     return !(a < b || a == b);
   }
+  mix<class T> function<Bool(T, T)>
+  less() {
+
+    return [](T a, T b) {return a < b;};
+  }
 
   mix<class T>
   Bool

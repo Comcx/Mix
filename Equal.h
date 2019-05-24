@@ -19,6 +19,15 @@ module Equal {
     return !(a == b);
   }
 
+
+  
+  mix<class T> function<Bool(T, T)>
+  equal() {
+
+    return [](T a, T b) {return a == b;};
+  }
+
+
 }
 
 

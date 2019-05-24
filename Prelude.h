@@ -5,6 +5,9 @@
 #include "Mix.h"
 
 
+#include <functional>
+use std::function;
+
 #ifndef Mix_Data
 #include "Data.h"
 
@@ -16,12 +19,24 @@
 #include "Algorithm.h"
 #endif
 
+
+
+#include "Show.h"
+#include "Equal.h"
+#include "Order.h"
+#include "Functor.h"
+#include "Monad.h"
+#include "Monoid.h"
+#include "Foldable.h"
+#include "Sort.h"
+
+
+
+
 #endif
 
 
 
-#include <functional>
-use std::function;
 
 
 
