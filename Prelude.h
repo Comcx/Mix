@@ -31,6 +31,7 @@ use std::function;
 #include "Functor.h"
 #include "Monad.h"
 #include "Monoid.h"
+#include "Applicative.h"
 #include "Foldable.h"
 
 

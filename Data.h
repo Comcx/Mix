@@ -56,7 +56,7 @@ size(Queue<T> v) {return v.size();}
 #if Mix_Config_CXX_Version == 17
 
   mix<class T> def Maybe = std::optional<T>;
-  mix<class T> T Just(T x) {return x;}
+  mix<class T> Maybe<T> Just(T x) {return x;}
   val Nothing = std::nullopt;
 #else
 //mix<class T> class Maybe {

@@ -6,12 +6,31 @@
 #include "Mix.h"
 #include "Prelude.h"
 
+
+module Applicative {
+
+  mix<class A, class B>
+  Maybe<B>
+  operator*(Maybe<function<B(A)>> mf, Maybe<A> a) {
+
+    Maybe<B> ans(Nothing);
+    if(mf) {
+      val f(mf.value());
+      if(a) ans = Just(f(a.value()));
+    }
+    else ans = a;
+    return ans;
+  }
+  
+}
+
 use module Show;
 use module Functor;
 use module Foldable;
 use module Monoid;
 use module Equal;
 use module Order;
+use module Applicative;
 use module Algorithm;
 
 
@@ -28,11 +47,12 @@ main(Int argc, Char *argv[]) {
   val s0(chars("abdghcjghkabkjlcacb"));
   val s1(chars("kab"));
   val r (search(s1, s0));
-  val d (pow(5, 6));
-  val f (floor(1.2));
+  function<Int(Int)> f ([](Int x) {return x * 2;});
+  val mf(Just(f));
+  var a (Just(5));
+  var rs(mf * a);
 
-  println(d);
-  println(f);
+  println(rs);
   println(res);
   println(r);
   println(x);
