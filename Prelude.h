@@ -11,6 +11,10 @@ use std::function;
 #ifndef Mix_Data
 #include "Data.h"
 
+#ifndef Mix_IO
+#include "IO.h"
+#endif
+
 #ifndef Mix_Math
 #include "Math.h"
 #endif
@@ -28,13 +32,8 @@ use std::function;
 #include "Monad.h"
 #include "Monoid.h"
 #include "Foldable.h"
-#include "Sort.h"
 
-mix<class T> void
-print(T x) { screen << Show::show(x); }
 
-mix<class T> void
-println(T x) { screen << Show::show(x) << endl; }
 
 Vector<Char> chars(String s) {
 

@@ -39,13 +39,6 @@ size(LinkedList<T> v) {return v.size();}
 
 #endif
 
-#ifndef Mix_Data_IO
-#include <iostream>
-var &screen(std::cout);
-use std::endl;
-
-#endif
-
 #ifndef Mix_Data_Array
 #include <array>
 mix<class T, size_t N> use Array = std::array<T, N>;
