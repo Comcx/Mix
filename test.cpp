@@ -7,23 +7,6 @@
 #include "Prelude.h"
 
 
-module Applicative {
-
-  mix<class A, class B>
-  Maybe<B>
-  operator*(Maybe<function<B(A)>> mf, Maybe<A> a) {
-
-    Maybe<B> ans(Nothing);
-    if(mf) {
-      val f(mf.value());
-      if(a) ans = Just(f(a.value()));
-    }
-    else ans = a;
-    return ans;
-  }
-  
-}
-
 use module Show;
 use module Functor;
 use module Foldable;
@@ -47,10 +30,10 @@ main(Int argc, Char *argv[]) {
   val s0(chars("abdghcjghkabkjlcacb"));
   val s1(chars("kab"));
   val r (search(s1, s0));
-  function<Int(Int)> f ([](Int x) {return x * 2;});
+  function<Int(Int)> f ([](Int x) {return x * 3;});
   val mf(Just(f));
-  var a (Just(5));
-  var rs(mf * a);
+  val a (Just(5));
+  val rs((f * id<Int>()) * (mf ^ a));
 
   println(rs);
   println(res);

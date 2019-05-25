@@ -4,9 +4,7 @@
 
 #include "Mix.h"
 
-
-#include <functional>
-use std::function;
+#include "Function.h"
 
 #ifndef Mix_Data
 #include "Data.h"

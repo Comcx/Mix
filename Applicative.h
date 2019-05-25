@@ -12,7 +12,23 @@ module Applicative {
   F<A> pure(A);
 
   mix<mix<class> class F, class A, class B>
-  F<B> operator*(F<function<B(A)>>, F<A>);
+  F<B> operator^(F<function<B(A)>>, F<A>);
+
+
+  mix<class A, class B>
+  Maybe<B>
+  operator^(Maybe<function<B(A)>> mf, Maybe<A> a) {
+
+    Maybe<B> ans(Nothing);
+    if(mf) {
+      val f(mf.value());
+      if(a) ans = Just(f(a.value()));
+    }
+    else ans = a;
+    return ans;
+  }
+
+  
 }
 
 
