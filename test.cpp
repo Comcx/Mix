@@ -6,7 +6,7 @@
 #include "Mix.h"
 #include "Prelude.h"
 
-
+use module Function;
 use module Show;
 use module Functor;
 use module Foldable;
@@ -27,9 +27,6 @@ main(Int argc, Char *argv[]) {
   Maybe<Int> res
     (search(10, v, equal<Int>()));
 
-  val s0(chars("abdghcjghkabkjlcacb"));
-  val s1(chars("kab"));
-  val r (search(s1, s0));
   function<Int(Int)> f ([](Int x) {return x * 3;});
   val mf(Just(f));
   val a (Just(5));
@@ -37,7 +34,6 @@ main(Int argc, Char *argv[]) {
 
   println(rs);
   println(res);
-  println(r);
   println(x);
   
   return 0;

@@ -9,6 +9,7 @@ use module Mix;
 
 module Equal {
 
+  use module Function;
   //This intentially leave commented for avoiding collision
   //mix<class T> Bool
   //operator==(T &a, T &b);

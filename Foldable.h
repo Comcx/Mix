@@ -9,6 +9,8 @@ use module Mix;
 
 module Foldable {
 
+  use module Function;
+
   mix<mix<Type> Type F, Type A, Type B>
   B
   foldl(function<B(B, A)>, F<A>, B);

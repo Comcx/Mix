@@ -44,6 +44,11 @@ size(LinkedList<T> v) {return v.size();}
 mix<class T, size_t N> use Array = std::array<T, N>;
 #endif
 
+#ifndef Mix_Data_Stack
+#include <stack>
+mix<class T> use Stack = std::stack<T>;
+#endif
+
 #ifndef Mix_Data_Queue
 #include <deque>
 mix<class T> use Queue = std::deque<T>;

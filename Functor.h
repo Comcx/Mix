@@ -9,6 +9,7 @@ use module Mix;
 
 module Functor {
 
+  use module Function;
   //mix<mix<Type> Type F, Type A, Type B>
   //F<B>
   //map(F<A>, function<B(A)>);

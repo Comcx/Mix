@@ -8,6 +8,7 @@ use module Functor;
 
 module Applicative {
 
+  use module Function;
   mix<mix<class> class F, class A>
   F<A> pure(A);
 

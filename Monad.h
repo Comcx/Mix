@@ -9,6 +9,8 @@ use module Mix;
 
 module Monad {
 
+  use module Function;
+
   mix<mix<class> class M, class A>
   M<A>
   pure(A);
