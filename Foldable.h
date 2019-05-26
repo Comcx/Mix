@@ -9,23 +9,28 @@ use module Mix;
 
 module Foldable {
 
-  use module Function;
+  module local {
 
-  mix<mix<Type> Type F, Type A, Type B>
-  B
-  foldl(function<B(B, A)>, F<A>, B);
+    use module Function;
 
-  //Vector
-  mix<Type A, Type B>
-  B
-  foldl(function<B(B, A)> f, Vector<A> v, B b) {
+    mix<mix<Type> Type F, Type A, Type B>
+    B
+    foldl(function<B(B, A)>, F<A>, B);
 
-    var ans (b);
-    for(val &e : v)
-      ans = f(ans, e);
+    //Vector
+    mix<Type A, Type B>
+    B
+    foldl(function<B(B, A)> f, Vector<A> v, B b) {
 
-    return ans;
-  }
+      var ans (b);
+      for(val &e : v)
+        ans = f(ans, e);
+
+      return ans;
+    }
+  }//end local
+
+  use local::foldl;
   
 }
 

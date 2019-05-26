@@ -5,37 +5,52 @@
 #include "Mix.h"
 #include "Equal.h"
 
-use module Mix;
+
 
 module Order {
 
-  //This intentially leave commented for avoiding collision
-  //mix<class T>
-  //Bool
-  //operator<(T &a, T &b);
+  module local {
 
-  mix<class T>
-  Bool
-  operator>(T a, T b) {
-    return !(a < b || a == b);
-  }
-  mix<class T> function<Bool(T, T)>
-  less() {
+    use module Mix;
+    use module Function;
+    //This intentially leave commented for avoiding collision
+    //mix<class T>
+    //Bool
+    //operator<(T &a, T &b);
 
-    return [](T a, T b) {return a < b;};
-  }
+    
 
-  mix<class T>
-  Bool
-  operator>=(T a, T b) {
-    return !(a < b);
-  }
+    mix<class T>
+    Bool
+    operator>(T a, T b) {
+      return !(a < b || a == b);
+    }
+    mix<class T> function<Bool(T, T)>
+    less() {
 
-  mix<class T>
-  Bool
-  operator<=(T a, T b) {
-    return a < b || a == b;
-  }
+      return [](T a, T b) {return a < b;};
+    }
+
+    mix<class T>
+    Bool
+    operator>=(T a, T b) {
+      return !(a < b);
+    }
+
+    mix<class T>
+    Bool
+    operator<=(T a, T b) {
+      return a < b || a == b;
+    }
+
+  }//end local
+
+  //use local::operator<;
+  use local::operator>;
+  use local::operator<=;
+  use local::operator<=;
+  use local::less;
+  
 
   
 }

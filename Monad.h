@@ -9,15 +9,23 @@ use module Mix;
 
 module Monad {
 
-  use module Function;
+  module local {
 
-  mix<mix<class> class M, class A>
-  M<A>
-  pure(A);
+    use module Function;
 
-  mix<mix<class> class M, class A, class B>
-  M<B>
-  operator>>=(M<A>, function<M<B>(A)>);
+    mix<mix<class> class M, class A>
+    M<A>
+    pure(A);
+
+    mix<mix<class> class M, class A, class B>
+    M<B>
+    operator>>=(M<A>, function<M<B>(A)>);
+
+  }//end local
+
+  use local::pure;
+  use local::operator>>=;
+  
 }
 
 

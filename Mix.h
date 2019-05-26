@@ -20,11 +20,11 @@
 #define Type   typename
 #define module namespace
 
-#define const(T)  const T
-#define unsign(T) unsigned T
-#define O_o(...)  virtual __VA_ARGS__ = 0
-#define Tag(id)   enum id##Tag {id}
-
+#define const(T)    const T
+#define unsign(T)   unsigned T
+#define O_o(...)    virtual __VA_ARGS__ = 0
+#define Tag(id)     enum id##Tag {id}
+#define summon(id)  using _local_::id
 
 def Int    = int;
 def Unit   = void;

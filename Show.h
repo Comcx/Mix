@@ -6,53 +6,59 @@
 #include "Foldable.h"
 #include "Data.h"
 
-use module Mix;
-use module Foldable;
 
 module Show {
 
-  use std::to_string;
+  module local {
 
-  //This intentially leave commented for avoiding collision
-  //mix<Type T> String show(T);
+    use std::to_string;
+    use module Mix;
+    use module Foldable;
+    use module Function;
 
-  //String -> String
-  String
-  show(String s) { return s; }
+    //This intentially leave commented for avoiding collision
+    //mix<Type T> String show(T);
 
-  //Char -> String
-  String
-  show(Char c) { return to_string(c); }
+    //String -> String
+    String
+    show(String s) { return s; }
 
-  //Int -> String
-  String
-  show(Int i) { return to_string(i); }
+    //Char -> String
+    String
+    show(Char c) { return to_string(c); }
 
-  //Int -> String
-  String
-  show(Double d) { return to_string(d); }
+    //Int -> String
+    String
+    show(Int i) { return to_string(i); }
 
-  //Bool -> String
-  String
-  show(Bool b) { return b ? "true" : "false"; }
+    //Int -> String
+    String
+    show(Double d) { return to_string(d); }
 
-  //Maybe<T> -> String
-  mix<class T> String
-  show(Maybe<T> x) {
-    String ans("");
-    if(x) ans = "Just(" + show(x.value()) + ")";
-    else ans = "Nothing";
-    return ans;
-  }
+    //Bool -> String
+    String
+    show(Bool b) { return b ? "true" : "false"; }
 
-  //Vector<T> -> String
-  mix<class T> String
-  show(Vector<T> v) { return
+    //Maybe<T> -> String
+    mix<class T> String
+    show(Maybe<T> x) {
+      String ans("");
+      if(x) ans = "Just(" + show(x.value()) + ")";
+      else ans = "Nothing";
+      return ans;
+    }
+
+    //Vector<T> -> String
+    mix<class T> String
+    show(Vector<T> v) { return
       
-    foldl(function<String(String,T)>
-	    ([](String a, T e) {return a + show(e) + " ";}),
-          v, String(""));
-  }
+      foldl(function<String(String,T)>
+              ([](String a, T e) {return a + show(e) + " ";}),
+            v, String(""));
+    }
+  }//end local
+
+  use local::show;
 
 
 }

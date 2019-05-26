@@ -9,55 +9,62 @@ use module Mix;
 
 module Functor {
 
-  use module Function;
-  //mix<mix<Type> Type F, Type A, Type B>
-  //F<B>
-  //map(F<A>, function<B(A)>);
+  module local {
+    
+    use module Function;
+    //mix<mix<Type> Type F, Type A, Type B>
+    //F<B>
+    //map(F<A>, function<B(A)>);
 
   
-  mix<Type A, Type B> Vector<B>
-  map(function<B(A)> f, Vector<A> v) {
+    mix<Type A, Type B> Vector<B>
+    map(function<B(A)> f, Vector<A> v) {
 
-    Vector<B> ans {};
-    for(var it(v.begin()); it != v.end(); ++it)
-      ans.push_back(f(*it));
+      Vector<B> ans {};
+      for(var it(v.begin()); it != v.end(); ++it)
+        ans.push_back(f(*it));
 
-    return ans;
-  }
-
-  mix<class A, class B> Maybe<B>
-  map(function<B(A)> f, Maybe<A> a) {
-
-    Maybe<B> ans(Nothing);
-    if(a) {
-      ans = Just(f(a.value()));
+      return ans;
     }
-    return ans;
-  }
 
-  mix<class A, class B, class C>
-  function<C(A)>
-  map(function<C(B)> g, function<B(A)> f) {
+    mix<class A, class B> Maybe<B>
+    map(function<B(A)> f, Maybe<A> a) {
 
-    return compose(g, f);
-  }
+      Maybe<B> ans(Nothing);
+      if(a) {
+        ans = Just(f(a.value()));
+      }
+      return ans;
+    }
+
+    mix<class A, class B, class C>
+    function<C(A)>
+    map(function<C(B)> g, function<B(A)> f) {
+
+      return compose(g, f);
+    }
 
 
   
 
-  mix<class A, class B, class C>
-  function<C(A)>
-  operator*(function<C(B)> g, function<B(A)> f) {
+    mix<class A, class B, class C>
+    function<C(A)>
+    operator*(function<C(B)> g, function<B(A)> f) {
 
-    return compose(g, f);
-  }
+      return compose(g, f);
+    }
 
-  mix<mix<Type> Type F, Type A, Type B>
-  F<B>
-  operator*(function<B(A)> f, F<A> a) {
+    mix<mix<Type> Type F, Type A, Type B>
+    F<B>
+    operator*(function<B(A)> f, F<A> a) {
 
-    return map(f, a);
-  }
+      return map(f, a);
+    }
+
+  }//end local
+
+  use local::map;
+  use local::operator*;
 
 }
 

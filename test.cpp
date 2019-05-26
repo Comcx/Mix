@@ -20,8 +20,11 @@ use module Algorithm;
 
 
 
+
 Int
 main(Int argc, Char *argv[]) {
+
+  module Sort = Algorithm::Sort;
 
   Vector<Int> v {7, 6, 8, 2, 4, 5};
   Vector<Int> x (sort(Sort::Merge, v));
@@ -31,8 +34,6 @@ main(Int argc, Char *argv[]) {
   val mf(Just(f));
   val a (Just(5));
   val rs((f * id<Int>()) * (mf ^ a));
-
-  v &= 5;
 
   println(rs);
   println(res);
