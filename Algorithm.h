@@ -7,6 +7,7 @@
 module Algorithm {
 
   use module Function;
+  use module List;
   //-==================================================-//
   //Search algorithms
   //-==================================================-//
@@ -113,16 +114,18 @@ module Algorithm {
     Tag(Quick);
     Tag(Bubble);
     Tag(Insert);
+
+    mix<class T>
+    Unit swap(T &a, T &b) {
+
+      val t(a);
+      a = b;
+      b = t;
+    }
+
   }
 
-  mix<class T>
-  Unit swap(T &a, T &b) {
-
-    val t(a);
-    a = b;
-    b = t;
-  }
-
+  
   //Just testing...
   mix<mix<class> class F, class T>
   F<T> sort(Sort::InsertTag t, F<T> a) {
@@ -130,7 +133,7 @@ module Algorithm {
     F<T> ans(a);
     for(Int i(0); i < a.size(); ++i)
       for(Int j(i); j > 0 && ans[j] < ans[j-1]; --j)
-        swap(ans[j], ans[j-1]);
+	Sort::swap(ans[j], ans[j-1]);
   
     return ans;
   }
@@ -141,26 +144,69 @@ module Algorithm {
     F<T> ans(a);
     for(Int i(0); i < a.size(); ++i) {
       for(Int j(i); j > 0 && ans[j] < ans[j-1]; --j)
-        swap(ans[j], ans[j-1]);
+	Sort::swap(ans[j], ans[j-1]);
     }
     return ans;
   }
 
-  mix<mix<class> class F, class T>
-  F<T> sort(Sort::MergeTag t, F<T> a) {
+  module Sort {
+    mix<mix<class> class F, class T>
+    Vector<T>
+    merge(const F<T> &a, const F<T> &b,
+	  Int s, Int m, Int e) {
 
-    F<T> ans(a);
+      Vector<T> ans {};
+      Int i(0), j(0);
+      while(i < (m-s+1) && j < (e-m)) {
+
+        if(a[i] < b[j]) ans &= a[i++];
+        else ans &= b[j++];
+      }
+      while(i < (m-s+1)) ans &= a[i++]; 
+      while(j < (e-m))   ans &= b[j++];
     
+     return ans;
+
+    }
+  }
+
+  //Merge sort
+  mix<mix<class> class F, class T>
+  F<T> sort(Sort::MergeTag t, F<T> a, Int s, Int e) {
+
+    F<T> ans {};
+    if(s == e) {
+      ans &= a[s];
+      return ans;
+    }
+    Int m((s + e) / 2);
+    val a0 = sort(Sort::Merge, a, s, m);
+    val a1 = sort(Sort::Merge, a, m+1, e);
+    ans = Sort::merge(a0, a1, s, m, e);
     
     return ans;
   }
+  mix<mix<class> class F, class T>
+  F<T> sort(Sort::MergeTag t, F<T> a) {
 
+    return sort(Sort::Merge, a, 0, size(a)-1);
+  }
+
+  //Quick sort
   mix<mix<class> class F, class T>
   F<T> sort(Sort::QuickTag q, F<T> a) {
 
     F<T> ans(a);
 
     return ans;
+  }
+
+
+  mix<mix<class> class F, class T>
+  F<T> sort(F<T> a) {
+
+    sort(a.begin(), a.end());
+    return a;
   }
 
 

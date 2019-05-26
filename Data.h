@@ -14,13 +14,7 @@ use String = std::string;
 #ifndef Mix_Data_Vector
 #include <vector>
 mix<class T> use Vector = std::vector<T>;
-mix<class T> Int
-size(Vector<T> v) {return v.size();}
-mix<class T> Vector<T>
-operator&(Vector<T> v, T x) {
-  v.push_back(x);
-  return v;
-}
+
 #endif
 
 #ifndef Mix_Data_Map
@@ -34,8 +28,6 @@ size(Map<A, B> m) {return m.size();}
 #ifndef Mix_Data_LinkedList
 #include <list>
 mix<class T> use LinkedList = std::list<T>;
-mix<class T> Int
-size(LinkedList<T> v) {return v.size();}
 
 #endif
 
@@ -47,6 +39,7 @@ mix<class T, size_t N> use Array = std::array<T, N>;
 #ifndef Mix_Data_Stack
 #include <stack>
 mix<class T> use Stack = std::stack<T>;
+
 #endif
 
 #ifndef Mix_Data_Queue

@@ -7,6 +7,7 @@
 #include "Prelude.h"
 
 use module Function;
+use module List;
 use module Show;
 use module Functor;
 use module Foldable;
@@ -23,14 +24,15 @@ Int
 main(Int argc, Char *argv[]) {
 
   Vector<Int> v {7, 6, 8, 2, 4, 5};
-  Vector<Int> x (sort(Sort::Insert, v));
-  Maybe<Int> res
-    (search(10, v, equal<Int>()));
+  Vector<Int> x (sort(Sort::Merge, v));
+  val res (search(10, v, equal<Int>()));
 
   function<Int(Int)> f ([](Int x) {return x * 3;});
   val mf(Just(f));
   val a (Just(5));
   val rs((f * id<Int>()) * (mf ^ a));
+
+  v &= 5;
 
   println(rs);
   println(res);

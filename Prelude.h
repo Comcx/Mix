@@ -8,6 +8,15 @@
 
 #ifndef Mix_Data
 #include "Data.h"
+#include "Show.h"
+#include "Equal.h"
+#include "Order.h"
+#include "Functor.h"
+#include "Monad.h"
+#include "Monoid.h"
+#include "Applicative.h"
+#include "Foldable.h"
+#include "List.h"
 
 #ifndef Mix_IO
 #include "IO.h"
@@ -20,17 +29,6 @@
 #ifndef Mix_Algorithm
 #include "Algorithm.h"
 #endif
-
-
-
-#include "Show.h"
-#include "Equal.h"
-#include "Order.h"
-#include "Functor.h"
-#include "Monad.h"
-#include "Monoid.h"
-#include "Applicative.h"
-#include "Foldable.h"
 
 
 
