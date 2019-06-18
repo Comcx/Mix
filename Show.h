@@ -23,6 +23,9 @@ module Show {
     String
     show(String s) { return s; }
 
+    String 
+    show(const Char *s) { return String(s); }
+
     //Char -> String
     String
     show(Char c) { return to_string(c); }
